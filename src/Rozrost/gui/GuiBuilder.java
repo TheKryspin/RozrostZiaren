@@ -13,12 +13,21 @@ public class GuiBuilder {
 	
 	private PoleZiaren Pole;
 	
+	private SidePanel Side;
+	
+	private Menu Menu_top;
+	
 	public GuiBuilder()
 	{
 		MainFrame = new Ramka();
 		
 		Pole = new PoleZiaren();
+		
+		Side = new SidePanel();
+	
+		Menu_top = new Menu();
 	}
+	
 	
 	public void buildGui()
 	{
@@ -29,8 +38,10 @@ public class GuiBuilder {
 		}
 		
 		
-		MainFrame.add(Pole, BorderLayout.CENTER);
 		
+		MainFrame.add(Pole, BorderLayout.CENTER);
+		MainFrame.add(Side,BorderLayout.EAST);
+		MainFrame.add(Menu_top, BorderLayout.NORTH);
 		MainFrame.setVisible(true);
 		
 		

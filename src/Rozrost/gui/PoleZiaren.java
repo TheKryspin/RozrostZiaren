@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
-import Rozrost.listeners.RysujZmiane;
+
 import Rozrost.storage.DataStorage;
 
 public class PoleZiaren extends JPanel implements MouseListener {
@@ -46,22 +46,28 @@ public class PoleZiaren extends JPanel implements MouseListener {
 		int x = arg0.getX();
 		int y = arg0.getY();
 
-			DataStorage.Ziarna[x][y] += 1;
+		for(int i = -(DataStorage.WielkoscZiarna/2) ; i < DataStorage.WielkoscZiarna/2; i ++){
+		for(int j = -(DataStorage.WielkoscZiarna/2); j < DataStorage.WielkoscZiarna/2; j++){
+
+			if((i+x) > (DataStorage.X_panel-1) || (i+x) < 0 || (y+j) < 0 || (y+j) > (DataStorage.Y_panel-1) ){ continue;}
+			else { DataStorage.Ziarna[x+i][y+j] = DataStorage.Value; }
 			
 			this.repaint();
-			
+		}	
+		
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+
+			
+	
 	}
 
 	@Override
@@ -81,15 +87,11 @@ public class PoleZiaren extends JPanel implements MouseListener {
 		if(var == 0 )
 		{
 
-			
-	
 			return Color.WHITE;
 			
 		}else if(var == 1)
 		{
 
-			
-			
 			return Color.GREEN;
 		
 		}else if(var == 2)
@@ -105,12 +107,17 @@ public class PoleZiaren extends JPanel implements MouseListener {
 
 			return Color.RED;
 			
-		}else
+		}else if(var == 4)
 		{
 			
 			return Color.YELLOW;
 		}
-		
+		else
+		{
+			
+			return Color.ORANGE;
+			
+		}
 		
 		
 	}

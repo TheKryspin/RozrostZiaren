@@ -22,6 +22,7 @@ public class GuiBuilder {
 		MainFrame = new Ramka();
 		
 		Pole = new PoleZiaren();
+		DataStorage.Panel = Pole;
 		
 		Side = new SidePanel();
 	

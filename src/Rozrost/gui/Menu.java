@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import Rozrost.storage.DataStorage;
 
 public class Menu extends JMenuBar {
-
+	
 	public Menu()
 	{
 		this.setPreferredSize(new Dimension(600,30));
@@ -36,6 +36,8 @@ public class Menu extends JMenuBar {
 					this.add(this.getPeriodMenu());
 	
 					this.add(this.getOtoczenieMenu());
+
+					this.add(this.getAnimationMenu());
 	}
 	
 	
@@ -58,6 +60,7 @@ public class Menu extends JMenuBar {
 						
 						DataStorage.Value = 1;
 						
+						DataStorage.KolorField.setColor();
 					}
 				
 					});
@@ -71,7 +74,8 @@ public class Menu extends JMenuBar {
 						public void actionPerformed(ActionEvent arg0) {
 							
 							DataStorage.Value = 2;
-							
+						
+							DataStorage.KolorField.setColor();
 						}
 					
 						});
@@ -87,6 +91,7 @@ public class Menu extends JMenuBar {
 								
 								DataStorage.Value = 3;
 								
+								DataStorage.KolorField.setColor();
 							}
 						
 							});
@@ -101,6 +106,7 @@ public class Menu extends JMenuBar {
 									
 									DataStorage.Value = 4;
 									
+									DataStorage.KolorField.setColor();
 								}
 							
 								});
@@ -115,6 +121,7 @@ public class Menu extends JMenuBar {
 										
 										DataStorage.Value = 5;
 										
+										DataStorage.KolorField.setColor();
 									}
 								
 									});
@@ -193,12 +200,16 @@ public class Menu extends JMenuBar {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				DataStorage.YesCounter ++;
 				
-				DataStorage.PeriodicBC = true;
+				if(DataStorage.YesCounter%2 == 0){}
+				else{
+			
+					DataStorage.PeriodicBC = true;
 				
+					DataStorage.PeriodycznoscField.setPeriodycznosc();
+				}
 			}
-			
-			
 			
 			
 		});
@@ -208,10 +219,14 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-			
+				DataStorage.NoCounter ++;
+				
+			if(DataStorage.NoCounter%2 == 0){}
+			else{
 				DataStorage.PeriodicBC = false;
 					
-				
+				DataStorage.PeriodycznoscField.setPeriodycznosc();
+			}
 			}
 			
 		});
@@ -240,6 +255,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 1;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -255,6 +272,9 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 2;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
+					
 				}
 				
 				
@@ -270,6 +290,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 3;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -286,6 +308,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 4;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -301,6 +325,9 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 5;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
+					
 				}
 				
 				
@@ -316,6 +343,9 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 6;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
+					
 				}
 				
 				
@@ -331,6 +361,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 7;
+			
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -346,6 +378,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 8;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -361,6 +395,8 @@ public class Menu extends JMenuBar {
 				public void actionPerformed(ActionEvent e) {
 				
 					DataStorage.Otoczenie = 9;
+				
+					DataStorage.OtoczenieField.setOtoczenie();
 				}
 				
 				
@@ -375,7 +411,52 @@ public class Menu extends JMenuBar {
 			OtoczenieMenu.add(PentLeft);
 			OtoczenieMenu.add(HeksRight);
 			OtoczenieMenu.add(HeksLeft);
+			
+			
 		return OtoczenieMenu;
 	}
 
+	JMenu getAnimationMenu()
+	{
+		JMenu AnimationMenu = new JMenu("Animacja");
+		
+		AnimationMenu.setForeground(Color.WHITE);
+		
+		AnimationMenu.setFont(new Font ("Verdana",0 , 12));
+	
+			JLabel AnimationLengthLabel = new JLabel("Dlugosc animacji");
+			
+			AnimationLengthLabel.setFont(new Font("Verdana", 0, 12));
+			
+				final JTextField AnimationField = new JTextField();
+			
+			JLabel KrokiLabel = new JLabel("Ile krokow");
+			
+			KrokiLabel.setFont(new Font("Verdana", 0, 12));
+			
+				final JTextField KrokiField = new JTextField();
+		
+			JButton Save = new JButton("Save");
+			
+			Save.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					
+					DataStorage.AnimationLength = Double.parseDouble(AnimationField.getText());
+					
+					DataStorage.Iterations = Integer.parseInt(KrokiField.getText());
+					
+				}
+				
+			});
+				
+			AnimationMenu.add(AnimationLengthLabel);
+			AnimationMenu.add(AnimationField);
+			AnimationMenu.add(KrokiLabel);
+			AnimationMenu.add(KrokiField);
+			AnimationMenu.add(Save);
+			
+		return AnimationMenu;
+	}
 }

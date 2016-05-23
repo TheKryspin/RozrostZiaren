@@ -16,7 +16,10 @@ public class SidePanel extends JPanel {
 	KolorText KolorField;
 	PeriodycznoscText PeriodycznoscField;
 	OtoczenieText OtoczenieField;
+	
 	StartButton Start;
+	StopButton Stop;
+	RestartButton Czysc;
 	
 	public SidePanel()
 	{
@@ -32,7 +35,10 @@ public class SidePanel extends JPanel {
 				KolorField = new KolorText();
 				PeriodycznoscField = new PeriodycznoscText();
 				OtoczenieField = new OtoczenieText();
+				
 				Start = new StartButton();
+				Stop = new StopButton();
+				Czysc = new RestartButton();
 				
 					DataStorage.KolorField = KolorField;		
 					DataStorage.PeriodycznoscField = PeriodycznoscField;
@@ -55,6 +61,13 @@ public class SidePanel extends JPanel {
 		
 		this.add(Start);
 	
+		this.add(new Component(){});
+		
+		this.add(Stop);
+		
+		this.add(new Component(){});
+		
+		this.add(Czysc);
 	}
 	
 }

@@ -53,53 +53,84 @@ public class Counter {
 	public static int VonNeumanMoore (int x, int y){
 		Counter.zeroAll();
 		
-		if((x+2) < DataStorage.X_panel && y < DataStorage.Y_panel) Counter.setCounter(DataStorage.Ziarna[x+2][y]);
+		if((x+2) < DataStorage.X_panel) Counter.setCounter(DataStorage.Ziarna[x+2][y]);
 		
-		if((x-2) > 0 && y < DataStorage.Y_panel) Counter.setCounter(DataStorage.Ziarna[x-2][y]);
+		if((x-2) > 0 ) Counter.setCounter(DataStorage.Ziarna[x-2][y]);
 		
-		if(x < DataStorage.X_panel && (y-2) > 0) Counter.setCounter(DataStorage.Ziarna[x][y-2]);
+		if( (y-2) > 0) Counter.setCounter(DataStorage.Ziarna[x][y-2]);
+		
+		if( (y+2) < DataStorage.Y_panel) Counter.setCounter(DataStorage.Ziarna[x][y+2]);
+		
+		for(int i = (x-1); i <= (x+1) ; i++){
+			
+			if(i >= DataStorage.X_panel || (y+1) >= DataStorage.Y_panel || i < 0 || (y+1) <0 ) continue;
+			else Counter.setCounter(DataStorage.Ziarna[i][y]);
+			
+			
+		}
+		for(int j = (y-1); j <= (y+1); j++)
+		{
+			if(x+1 >= DataStorage.X_panel || j >= DataStorage.Y_panel || (x+1) < 0 || j <0 ) continue;
+			else Counter.setCounter(DataStorage.Ziarna[x][j]);
+		
+		
+		}
+		
+		return Counter.returningValue();
+		
 	}	
 	public static int PentTop (int x, int y){
 		
+		Counter.zeroAll();
+		
+		for(int j = (y-1); j <= (y+1); j++)
+		{
+			if(x+1 >= DataStorage.X_panel || j >= DataStorage.Y_panel || (x+1) < 0 || j <0 ) continue;
+			else{ 
+				Counter.setCounter(DataStorage.Ziarna[x][j]);
+			
+			}
+			
 		
 		
+		}
 		
-		
+		return Counter.returningValue();
 	}
 	public static int PentBottom (int x, int y){
+		Counter.zeroAll();
 		
 		
-		
-		
+		return Counter.returningValue();
 		
 	}
 	public static int PentRight (int x, int y){
+		Counter.zeroAll();
 		
 		
-		
-		
+		return Counter.returningValue();
 		
 	}	
 	public static int PentLeft (int x, int y){
+		Counter.zeroAll();
 		
 		
 		
-		
-		
+		return Counter.returningValue();
 	}	
 	public static int HeksRight (int x, int y){
 		
+		Counter.zeroAll();
 		
 		
-		
-		
+		return Counter.returningValue();
 	}
 	public static int HeksLeft (int x, int y){
+		Counter.zeroAll();
 		
 		
 		
-		
-		
+		return Counter.returningValue();
 	}	
 	
 	public static void zeroAll(){

@@ -4,6 +4,7 @@ import Rozrost.gui.KolorText;
 import Rozrost.gui.OtoczenieText;
 import Rozrost.gui.PeriodycznoscText;
 import Rozrost.gui.PoleZiaren;
+import Rozrost.thread.Symulacja;
 
 public class DataStorage {
 
@@ -23,6 +24,8 @@ public class DataStorage {
 	public static KolorText KolorField = null;
 	public static PeriodycznoscText PeriodycznoscField = null;
 	public static OtoczenieText OtoczenieField = null;
+	
+	public static Symulacja Symuluj;
 	
 	public static double AnimationLength;
 	public static int Iterations;

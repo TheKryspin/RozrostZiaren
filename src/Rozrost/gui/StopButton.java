@@ -9,37 +9,36 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 
 import Rozrost.storage.DataStorage;
-import Rozrost.thread.Symulacja;
 
-public class StartButton extends JButton implements MouseListener {
+public class StopButton extends JButton implements MouseListener {
 
-	StartButton(){
+	public StopButton(){
 		
-		this.setPreferredSize(new Dimension(100,25));
-		
-			this.setForeground(Color.WHITE);
-		
-			this.setFont(new Font("Verdana", 0 , 12));
-		
-			this.setBackground(Color.BLACK);
-		
-			this.setText("Start");
-			
-			this.setHorizontalTextPosition(CENTER);
-			
-			this.addMouseListener(this);
-			
-	}
+	this.setPreferredSize(new Dimension(100,25));
 	
+	this.setForeground(Color.WHITE);
+
+	this.setFont(new Font("Verdana", 0 , 12));
+
+	this.setBackground(Color.BLACK);
+
+	this.setText("Stop");
+	
+	this.setHorizontalTextPosition(CENTER);
+	
+	this.addMouseListener(this);
+	
+	}
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
-		Symulacja Symuluj = new Symulacja();
-		
-		DataStorage.Symuluj = Symuluj;
-		
-		Symuluj.start();
-		
+		try{
+		DataStorage.Symuluj.stop(new Throwable());
+		}
+		catch(Exception a){
+			
+		}
 	}
 
 	@Override
@@ -65,5 +64,5 @@ public class StartButton extends JButton implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 }

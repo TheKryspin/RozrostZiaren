@@ -9,61 +9,67 @@ import java.awt.event.MouseListener;
 import javax.swing.JButton;
 
 import Rozrost.storage.DataStorage;
-import Rozrost.thread.Symulacja;
 
-public class StartButton extends JButton implements MouseListener {
+public class RestartButton extends JButton implements MouseListener{
 
-	StartButton(){
-		
-		this.setPreferredSize(new Dimension(100,25));
-		
+	public RestartButton()
+	{
+			
+			this.setPreferredSize(new Dimension(100,25));
+			
 			this.setForeground(Color.WHITE);
-		
+
 			this.setFont(new Font("Verdana", 0 , 12));
-		
+
 			this.setBackground(Color.BLACK);
-		
-			this.setText("Start");
+
+			this.setText("Czysc");
 			
 			this.setHorizontalTextPosition(CENTER);
 			
 			this.addMouseListener(this);
 			
+			
+		
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+
+		for (int i = 0 ; i < DataStorage.X_panel; i ++){
+			for( int j = 0; j < DataStorage.Y_panel; j ++){
+				
+				DataStorage.Ziarna[i][j] = 0 ;
+			}
+			
+		}
+		
+		DataStorage.Panel.repaint();
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		
-		Symulacja Symuluj = new Symulacja();
-		
-		DataStorage.Symuluj = Symuluj;
-		
-		Symuluj.start();
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
